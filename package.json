@@ -1,8 +1,5 @@
 {
   "name": "learn-csp-header",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,9 +7,8 @@
     "type": "git",
     "url": "git+https://github.com/kjirou/learn-csp-header.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "kjirou",
+  "license": "SEE LICENSE IN https://github.com/kjirou/learn-csp-header/blob/c9b1f198f2e51c6e8ea73b8b398c841eafb5a808/LICENSE",
   "bugs": {
     "url": "https://github.com/kjirou/learn-csp-header/issues"
   },
