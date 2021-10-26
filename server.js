@@ -14,19 +14,7 @@ function createJsScriptTag(options = {}) {
   ].join('')
 }
 
-app.get('/without-csp/without-eval', function (req, res) {
-  const htmlLines = [
-    '<html><body>',
-    createJsScriptTag(),
-    '</body></html>',
-  ]
-  res.set({
-    'Content-Type': 'text/html',
-    'Cache-Control': 'no-store',
-  })
-  res.send(htmlLines.join('\n'))
-})
-app.get('/without-csp/with-eval', function (req, res) {
+app.get('/no-csp/with-eval', function (req, res) {
   const htmlLines = [
     '<html><body>',
     createJsScriptTag({withEval: true}),
@@ -35,6 +23,45 @@ app.get('/without-csp/with-eval', function (req, res) {
   res.set({
     'Content-Type': 'text/html',
     'Cache-Control': 'no-store',
+  })
+  res.send(htmlLines.join('\n'))
+})
+app.get('/csp/script-src/self', function (req, res) {
+  const htmlLines = [
+    '<html><body>',
+    createJsScriptTag(),
+    '</body></html>',
+  ]
+  res.set({
+    'Content-Type': 'text/html',
+    'Cache-Control': 'no-store',
+    'Content-Security-Policy': 'script-src \'self\'',
+  })
+  res.send(htmlLines.join('\n'))
+})
+app.get('/csp/script-src/unsafe-inline', function (req, res) {
+  const htmlLines = [
+    '<html><body>',
+    createJsScriptTag(),
+    '</body></html>',
+  ]
+  res.set({
+    'Content-Type': 'text/html',
+    'Cache-Control': 'no-store',
+    'Content-Security-Policy': 'script-src \'unsafe-inline\'',
+  })
+  res.send(htmlLines.join('\n'))
+})
+app.get('/csp/script-src/unsafe-eval', function (req, res) {
+  const htmlLines = [
+    '<html><body>',
+    createJsScriptTag({withEval: true}),
+    '</body></html>',
+  ]
+  res.set({
+    'Content-Type': 'text/html',
+    'Cache-Control': 'no-store',
+    'Content-Security-Policy': 'script-src \'unsafe-inline\' \'unsafe-eval\'',
   })
   res.send(htmlLines.join('\n'))
 })
