@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/kjirou/learn-csp-header/issues"
   },
-  "homepage": "https://github.com/kjirou/learn-csp-header#readme"
+  "homepage": "https://github.com/kjirou/learn-csp-header#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
